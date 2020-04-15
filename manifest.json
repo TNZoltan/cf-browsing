@@ -4,10 +4,6 @@
   "description": "CF Browsing attempts to hide any COVID-19 related content to allow more peace while being on the internet",
   "permissions": ["activeTab", "declarativeContent", "storage"], 
   "options_page": "options.html",
-  "background": {
-    "scripts": ["background.js"],
-    "persistent": false
-  },
   "content_scripts": [
     {
       "matches": [
