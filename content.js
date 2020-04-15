@@ -1,6 +1,6 @@
-var normalDictionary = ['COVID', 'covid', 'COVID-19', 'covid-19', 'coronavirus', 'corona virus', 'Coronavirus', 'pandemic']
+var normalDictionary = ['COVID', 'covid', 'COVID-19', 'covid-19', 'coronavirus', 'corona virus', 'Coronavirus', 'pandemic', 'Pandemic']
 
-var aggressiveDictionary = ['corona', 'virus', 'crisis', 'distancing', 'apocalypse']
+var aggressiveDictionary = ['corona', 'Corona', 'virus', 'Virus', 'crisis', 'Crisis', 'distancing', 'apocalypse', 'Apocalypse']
 
 var elements = [...document.body.getElementsByTagName('*')];
 
