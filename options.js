@@ -4,20 +4,35 @@
 
 'use strict';
 
-let page = document.getElementById('buttonDiv');
-const kButtonColors = ['#3aa757', '#e8453c', '#f9bb2d', '#4688f1'];
-
-function constructOptions(kButtonColors) {
-  for (let item of kButtonColors) {
-    let button = document.createElement('button');
-    button.style.backgroundColor = item;
-    button.addEventListener('click', function() {
-      chrome.storage.sync.set({color: item}, function() {
-        console.log('color is ' + item);
-      })
-    });
-    page.appendChild(button);
-  }
+var modes = {
+  NORMAL: 'NORMAL',
+  AGGRESSIVE: 'AGGRESSIVE'
 }
 
-constructOptions(kButtonColors);
+let page = document.getElementById('buttons'); 
+
+let normalButton = document.createElement('button');
+normalButton.innerHTML = 'Normal Mode';
+normalButton.addEventListener('click', function () {
+  chrome.storage.sync.set({ mode: modes.NORMAL })
+  normalButton.classList.add('active')
+  aggressiveButton.classList.remove('active')
+})
+
+let aggressiveButton = document.createElement('button');
+aggressiveButton.innerHTML = 'Agressive Mode';
+aggressiveButton.addEventListener('click', function () {
+  chrome.storage.sync.set({ mode: modes.AGGRESSIVE })
+  aggressiveButton.classList.add('active')
+  normalButton.classList.remove('active')
+})
+
+chrome.storage.sync.get("mode", function (obj) {
+  if (obj.mode === modes.NORMAL) 
+    normalButton.classList.add('active')
+  else
+    aggressiveButton.classList.add('active')
+})
+
+page.appendChild(normalButton);
+page.appendChild(aggressiveButton)
